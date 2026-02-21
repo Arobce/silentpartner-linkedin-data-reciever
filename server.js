@@ -45,12 +45,12 @@ app.post('/webhook/linkedin-profile', async (req, res) => {
     console.log(profileData);
 
     // Validate required fields
-    // if (!profileData.profile || !profileData.name) {
-    //   return res.status(400).json({
-    //     success: false,
-    //     error: 'Missing required fields: profile and name',
-    //   });
-    // }
+    if (!profileData.profile || !profileData.name) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: profile and name',
+      });
+    }
 
     // Use profile username as document ID (or generate UUID)
     const docId = profileData.profile.replace(/[^a-zA-Z0-9_-]/g, '_');
