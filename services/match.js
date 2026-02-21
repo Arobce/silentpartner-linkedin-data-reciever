@@ -128,23 +128,25 @@ Consider:
 - Compatible conversation styles
 - Aligned personality traits
 - Compatible primary goals
-- Professional alignment
+- Professional alignment based on LinkedIn headline and summary
 
 User 1:
 - Name: ${user1.name}
 - Conversation Style: ${user1.conversationStyle}
-- Favorite Topics: ${user1.favoriteTopics.join(', ')}
-- Personality Traits: ${user1.personalityTraits.join(', ')}
-- Primary Goal: ${user1.primaryGoal}
-- Headline: ${user1.linkedin.headline}
+- Favorite Topics: ${user1.favoriteTopics.join(', ') || 'Not specified'}
+- Personality Traits: ${user1.personalityTraits.join(', ') || 'Not specified'}
+- Primary Goal: ${user1.primaryGoal || 'Not specified'}
+- LinkedIn Headline: ${user1.linkedin?.headline || 'Not specified'}
+- Professional Summary: ${user1.linkedin?.summary || 'Not specified'}
 
 User 2:
 - Name: ${user2.name}
 - Conversation Style: ${user2.conversationStyle}
-- Favorite Topics: ${user2.favoriteTopics.join(', ')}
-- Personality Traits: ${user2.personalityTraits.join(', ')}
-- Primary Goal: ${user2.primaryGoal}
-- Headline: ${user2.linkedin.headline}
+- Favorite Topics: ${user2.favoriteTopics.join(', ') || 'Not specified'}
+- Personality Traits: ${user2.personalityTraits.join(', ') || 'Not specified'}
+- Primary Goal: ${user2.primaryGoal || 'Not specified'}
+- LinkedIn Headline: ${user2.linkedin?.headline || 'Not specified'}
+- Professional Summary: ${user2.linkedin?.summary || 'Not specified'}
 
 Return ONLY a single integer between 0 and 100 representing the match percentage. No explanation, just the number.`;
 
@@ -372,18 +374,22 @@ async function findAndSaveMatches(db, newUser, threshold = 90) {
         return;
       }
 
+      // Extract LinkedIn response data (entire webhook payload)
+      const linkedinData = userData.linkedinProfileDataResponse?.data || {};
+
       // Extract onboarding data for matching
       existingUsers.push({
         id: doc.id,
-        name: userData.name || 'Unknown',
-        email: userData.email || '',
+        name: userData.name || linkedinData.name || 'Unknown',
+        email: userData.email || linkedinData.email || '',
         conversationStyle: userData.onboardingAnswers?.conversationStyle || '',
         favoriteTopics: userData.onboardingAnswers?.favoriteTopics || [],
         personalityTraits: userData.onboardingAnswers?.personalityTraits || [],
         primaryGoal: userData.onboardingAnswers?.primaryGoal || '',
         linkedin: {
-          name: userData.linkedinProfileDataResponse?.data?.linkedin?.name || userData.name || 'Unknown',
-          headline: userData.linkedinProfileDataResponse?.data?.linkedin?.headline || '',
+          name: linkedinData.name || userData.name || 'Unknown',
+          headline: linkedinData.experience?.[0]?.title || linkedinData.description || '',
+          summary: linkedinData.description || '',
         },
       });
     });
@@ -410,7 +416,7 @@ async function findAndSaveMatches(db, newUser, threshold = 90) {
         matches: matches,
       };
     } else {
-      return {
+      return {  
         success: true,
         totalMatches: 0,
         savedMatches: 0,

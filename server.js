@@ -60,7 +60,7 @@ app.post('/webhook/linkedin-profile', async (req, res) => {
       profileData = profileData.data;
     }
 
-    const profileName = profileData.profile || profileData.profile_name;
+    const profileName = profileData.name;
     console.log('✓ Processing LinkedIn profile for:', profileName);
 
     // Validate required fields
@@ -116,9 +116,8 @@ app.post('/webhook/linkedin-profile', async (req, res) => {
       personalityTraits: userData.onboardingAnswers?.personalityTraits || profileData.onboardingAnswers?.personalityTraits || [],
       primaryGoal: userData.onboardingAnswers?.primaryGoal || profileData.onboardingAnswers?.primaryGoal || '',
       linkedin: {
-        name: profileData.linkedin?.name || profileData.name || userData.name || 'Unknown',
-        headline: profileData.linkedin?.headline || '',
-        picture: profileData.linkedin?.picture || '',
+        name: profileData.name || userData.name || 'Unknown',
+        headline: profileData.experience?.[0]?.title || profileData.description || '',
       },
     };
 
