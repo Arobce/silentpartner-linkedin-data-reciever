@@ -1,0 +1,171 @@
+{
+  "url": "https://linkedin.com/in/john-doe-sample/",
+  "profile": "john-doe-sample",
+  "crawled_at": "30/10/2024 11:45:22",
+  "name": "Stephen Colbert",
+  "description": "Emmy-winning host, political satirist, and part-time bear wrestler",
+  "location": "New York, New York, United States",
+  "followers": "528K followers",
+  "connections": "500+ connections",
+  "experience": [
+    {
+      "title": "Host & Executive Producer",
+      "company_name": "The Late Show with Stephen Colbert",
+      "company_link": "https://www.linkedin.com/company/late-show-colbert",
+      "image_url": null,
+      "date": {
+        "start_date": "2015",
+        "end_date": null,
+        "duration": {
+          "years": 9,
+          "months": 6
+        }
+      },
+      "location": "New York, NY",
+      "description": "Making America laugh great again since 2015"
+    },
+    {
+      "title": "Correspondent",
+      "company_name": "The Daily Show",
+      "company_link": "https://www.linkedin.com/company/daily-show",
+      "image_url": null,
+      "date": {
+        "start_date": "1997",
+        "end_date": "2005",
+        "duration": {
+          "years": 8,
+          "months": 0
+        }
+      },
+      "location": "New York, NY",
+      "description": "Learned how to read a teleprompter while maintaining eye contact"
+    }
+  ],
+  "education": [
+    {
+      "university_name": "Northwestern University",
+      "university_link": "https://www.northwestern.edu",
+      "image_url": null,
+      "degree": "Bachelor of Arts",
+      "major": "Theater",
+      "date": {
+        "start_date": "1982",
+        "end_date": "1986"
+      }
+    }
+  ],
+  "certifications": [
+    {
+      "image_url": "https://static.licdn.com/aero-v1/sc/h/cs8pjfgyw96g44ln9r7tct85f",
+      "title": "Certified Truthiness Expert",
+      "course_link": "",
+      "issuer": "The Colbert Report",
+      "credential": "",
+      "issued_date": "Oct 2005"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "description": "Native or bilingual proficiency"
+    },
+    {
+      "name": "French",
+      "description": "Limited working proficiency (mostly just the word 'fromage')"
+    }
+  ],
+  "volunteerings": [
+    {
+      "role": "Board Member",
+      "organization": "DonorsChoose",
+      "volunteering_link": "https://www.donorschoose.org",
+      "date": {
+        "start_date": "2010",
+        "end_date": null,
+        "duration": {
+          "years": 14,
+          "months": 0
+        }
+      },
+      "cause": "Education",
+      "description": "Helping teachers get the resources they need (and occasionally mocking them lovingly)"
+    }
+  ],
+  "publications": [
+    {
+      "title": "I Am America (And So Can You!)",
+      "publisher": "Grand Central Publishing",
+      "publication_link": "",
+      "publication_date": "2007",
+      "description": "#1 New York Times Bestseller (probably)"
+    }
+  ],
+  "projects": [
+    {
+      "name": "The Colbert Report",
+      "date": {
+        "start_date": "2005",
+        "end_date": "2014"
+      },
+      "description": "Award-winning news parody program (also known as 'the real news')"
+    }
+  ],
+  "courses": [
+    {
+      "name": "Advanced Satire 501",
+      "number": "COLB-101"
+    },
+    {
+      "name": "How to Interview Politicians Without Laughing",
+      "number": "COLB-404"
+    }
+  ],
+  "honors_and_awards": [
+    {
+      "title": "Peabody Award",
+      "issuer": "University of Georgia",
+      "issued_date": "2008",
+      "description": "For The Colbert Report (they said it was 'important journalism' - we didn't correct them)"
+    },
+    {
+      "title": "Emmy Award",
+      "issuer": "Television Academy",
+      "issued_date": "2014",
+      "description": "Outstanding Variety Series (we beat actual news programs)"
+    }
+  ],
+  "activities": [
+    {
+      "title": "White House Correspondents' Dinner Speaker",
+      "subtitle": "Liked by John Doe",
+      "image_url": "https://media.licdn.com/dms/image/v2/D4D22AQG1HTYEZX8ZUw/feedshare-shrink_800/B4DZexbd80HAAg-/0/1751028470866?e=2147483647&v=beta&t=b2Q_3B2SnYHrtO0Al8WUVMpeqFx1gvRUucb2LnqwS3k",
+      "link": "https://www.linkedin.com/posts/noah-labs_noahlabs-digitalhealth-telemonitoring-activity-7344375218691321856-quFk"
+    }
+  ],
+  "similar_profiles": [
+    {
+      "url": "https://linkedin.com/in/jonstewart/",
+      "name": "Jon Stewart",
+      "title": "Host, The Problem with Jon Stewart",
+      "image_url": null
+    },
+    {
+      "url": "https://linkedin.com/in/johnoliver/",
+      "name": "John Oliver",
+      "title": "Host, Last Week Tonight",
+      "image_url": null
+    }
+  ],
+  "patents": [
+    {
+      "title": "Method and Apparatus for Maintaining a Straight Face During Political Interviews",
+      "patent_id": "USPAT-COLB-2020-001",
+      "link": ""
+    },
+    {
+      "title": "Satirical News Delivery System with Enhanced Truthiness",
+      "patent_id": "USPAT-COLB-2012-002",
+      "link": ""
+    }
+  ]
+}
