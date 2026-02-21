@@ -12,6 +12,14 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
+// Debug middleware to log incoming requests
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
+  console.log('Content-Type:', req.headers['content-type']);
+  console.log('Body:', JSON.stringify(req.body, null, 2));
+  next();
+});
+
 // Initialize Firebase with web config
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -40,15 +48,27 @@ app.get('/health', (req, res) => {
  */
 app.post('/webhook/linkedin-profile', async (req, res) => {
   try {
-    const profileData = req.body;
+    let profileData = req.body;
 
-    console.log(profileData);
+    // Handle wrapped data structure (check if data is nested under 'data' property)
+    if (profileData.data && profileData.request_id) {
+      console.log('📦 Detected wrapped data structure, extracting from .data');
+      profileData = profileData.data;
+    }
+
+    console.log('✓ Processing profile:', profileData.profile, '-', profileData.name);
 
     // Validate required fields
     if (!profileData.profile || !profileData.name) {
       return res.status(400).json({
         success: false,
         error: 'Missing required fields: profile and name',
+        receivedData: {
+          type: typeof profileData,
+          keys: Object.keys(profileData || {}),
+          profile: profileData?.profile,
+          name: profileData?.name,
+        },
       });
     }
 
