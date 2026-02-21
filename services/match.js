@@ -376,19 +376,20 @@ async function findAndSaveMatches(db, newUser, threshold = 90) {
 
       // Extract LinkedIn response data (entire webhook payload)
       const linkedinData = userData.linkedinProfileDataResponse?.data || {};
+      const linkedinProfile = linkedinData.linkedin || {};
 
       // Extract onboarding data for matching
       existingUsers.push({
         id: doc.id,
-        name: userData.name || linkedinData.name || 'Unknown',
-        email: userData.email || linkedinData.email || '',
+        name: userData.name || linkedinProfile.name || linkedinData.name || 'Unknown',
+        email: userData.email || linkedinProfile.email || linkedinData.email || '',
         conversationStyle: userData.onboardingAnswers?.conversationStyle || '',
         favoriteTopics: userData.onboardingAnswers?.favoriteTopics || [],
         personalityTraits: userData.onboardingAnswers?.personalityTraits || [],
         primaryGoal: userData.onboardingAnswers?.primaryGoal || '',
         linkedin: {
-          name: linkedinData.name || userData.name || 'Unknown',
-          headline: linkedinData.experience?.[0]?.title || linkedinData.description || '',
+          name: linkedinProfile.name || linkedinData.name || userData.name || 'Unknown',
+          headline: linkedinProfile.headline || linkedinData.headline || linkedinData.experience?.[0]?.title || linkedinData.description || '',
           summary: linkedinData.description || '',
         },
       });

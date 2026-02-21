@@ -109,15 +109,16 @@ app.post('/webhook/linkedin-profile', async (req, res) => {
     // Prepare user object for matching (combine existing data with new LinkedIn response)
     const newUser = {
       id: userId,
-      name: userData.name || profileData.name || 'Unknown',
-      email: userData.email || profileData.email || '',
+      name: userData.name || profileData.linkedin?.name || profileData.name || 'Unknown',
+      email: userData.email || profileData.linkedin?.email || profileData.email || '',
       conversationStyle: userData.onboardingAnswers?.conversationStyle || profileData.onboardingAnswers?.conversationStyle || '',
       favoriteTopics: userData.onboardingAnswers?.favoriteTopics || profileData.onboardingAnswers?.favoriteTopics || [],
       personalityTraits: userData.onboardingAnswers?.personalityTraits || profileData.onboardingAnswers?.personalityTraits || [],
       primaryGoal: userData.onboardingAnswers?.primaryGoal || profileData.onboardingAnswers?.primaryGoal || '',
       linkedin: {
-        name: profileData.name || userData.name || 'Unknown',
-        headline: profileData.experience?.[0]?.title || profileData.description || '',
+        name: profileData.linkedin?.name || profileData.name || userData.name || 'Unknown',
+        headline: profileData.linkedin?.headline || profileData.headline || profileData.experience?.[0]?.title || profileData.description || '',
+        picture: profileData.linkedin?.picture || '',
       },
     };
 
